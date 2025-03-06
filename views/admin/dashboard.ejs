@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>Painel Administrativo</h2>
+    <form action="/admin/logout" method="post">
+      <button type="submit">Logout</button>
+    </form>
+    <h3>Tap List</h3>
+    <ul>
+      <% tapList.forEach(item => { %>
+        <li>
+          <%= item.name %> - <%= item.price %> - <%= item.ml %>ml - IBU: <%= item.ibu %> - ABV: <%= item.abv %>%
+        </li>
+      <% }) %>
+    </ul>
+    <h3>Adicionar Item</h3>
+    <form action="/admin/add" method="post">
+      <input type="text" name="name" placeholder="Nome" required>
+      <input type="text" name="price" placeholder="Preço" required>
+      <input type="text" name="ml" placeholder="ML" required>
+      <input type="text" name="ibu" placeholder="IBU" required>
+      <input type="text" name="abv" placeholder="ABV" required>
+      <button type="submit">Adicionar</button>
+    </form>
+    <h3>Gerar QR Code para Mesa</h3>
+    <form action="/admin/generate-qr" method="get">
+      <input type="text" name="table" placeholder="Número da Mesa" required>
+      <button type="submit">Gerar QR Code</button>
+    </form>
+  </div>
+</body>
+</html>
